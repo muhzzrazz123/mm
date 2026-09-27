@@ -114,6 +114,34 @@ const ScrollVideoExperience = (() => {
         }
       }
 
+      let dismissed = false;
+      const dismissLoader = () => {
+        if (dismissed) return;
+        dismissed = true;
+        drawFrame(currentFrameIndex);
+        if (loaderScreen && window.gsap) {
+          gsap.to(loaderScreen, {
+            opacity: 0,
+            duration: 0.5,
+            ease: 'power2.out',
+            onComplete: () => {
+              loaderScreen.style.display = 'none';
+              resolve();
+            }
+          });
+        } else {
+          if (loaderScreen) loaderScreen.style.display = 'none';
+          resolve();
+        }
+      };
+
+      // Safety fallback: Never keep the screen blocked for more than 2.5s
+      setTimeout(() => {
+        if (!dismissed) {
+          dismissLoader();
+        }
+      }, 2500);
+
       framePaths.forEach((path, index) => {
         const img = new Image();
         img.src = path;
@@ -131,29 +159,14 @@ const ScrollVideoExperience = (() => {
             drawFrame(0);
           }
 
-          if (loadedCount === TOTAL_FRAMES) {
-            // Dismiss loader smoothly
-            if (loaderScreen && window.gsap) {
-              gsap.to(loaderScreen, {
-                opacity: 0,
-                duration: 0.6,
-                delay: 0.2,
-                ease: 'power2.out',
-                onComplete: () => {
-                  loaderScreen.style.display = 'none';
-                  resolve();
-                }
-              });
-            } else {
-              if (loaderScreen) loaderScreen.style.display = 'none';
-              resolve();
-            }
+          // Once hero clip (first 12 frames) is buffered or all frames ready, release loader
+          if (loadedCount === TOTAL_FRAMES || (loadedCount >= 12 && index === 11)) {
+            setTimeout(dismissLoader, 300);
           }
         };
 
         img.onload = onImageComplete;
         img.onerror = () => {
-          console.warn(`Could not load frame: ${path}, using fallback.`);
           onImageComplete();
         };
       });

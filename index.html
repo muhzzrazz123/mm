@@ -312,8 +312,163 @@
           Rolling up to the illuminated showcase wall and slowing down smoothly. All items below are populated directly from a simple JSON file, keeping stock completely editable.
         </p>
 
-        <!-- Populated dynamically via scroll-video.js from data/new_arrivals.json -->
-        <div class="video-product-grid" id="new-arrivals-json-grid"></div>
+        <!-- Populated with initial HTML for instant loading and file:// offline resilience; hydrated by scroll-video.js from data/new_arrivals.json -->
+        <div class="video-product-grid" id="new-arrivals-json-grid">
+          <!-- Item 1 -->
+          <article class="video-product-card" data-id="m-sh-01">
+            <span class="card-tag">Trending Drop</span>
+            <div class="card-img-wrap">
+              <img src="assets/gent_oxford_shirt.jpg" alt="MOCCA Signature Oxford Cutaway Shirt" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-cat">Gents Atelier</span>
+              <h4 class="card-title">MOCCA Signature Oxford Cutaway Shirt</h4>
+              <p class="card-material">100% Superfine Giza Cotton (140s/2 Two-Ply)</p>
+              <div class="card-sizes">
+                <button class="size-chip selected" onclick="selectProductSize('m-sh-01', '38', this)">38</button>
+                <button class="size-chip" onclick="selectProductSize('m-sh-01', '40', this)">40</button>
+                <button class="size-chip" onclick="selectProductSize('m-sh-01', '42', this)">42</button>
+                <button class="size-chip" onclick="selectProductSize('m-sh-01', '44', this)">44</button>
+              </div>
+              <div class="card-footer">
+                <span class="card-price">₹1,850</span>
+                <button class="btn-card-add" onclick="handleAddProductToCart('m-sh-01', this)">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                  <span>Add to Bag</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 2 -->
+          <article class="video-product-card" data-id="m-sh-02">
+            <span class="card-tag">Showroom Rack</span>
+            <div class="card-img-wrap">
+              <img src="assets/mocca/mocca_shirts_rack.jpeg" alt="Cuban Resort Collar Textured Shirt" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-cat">Gents Atelier</span>
+              <h4 class="card-title">Cuban Resort Collar Textured Shirt</h4>
+              <p class="card-material">Textured Cotton Slub &amp; Waffle Weave</p>
+              <div class="card-sizes">
+                <button class="size-chip selected" onclick="selectProductSize('m-sh-02', 'M', this)">M</button>
+                <button class="size-chip" onclick="selectProductSize('m-sh-02', 'L', this)">L</button>
+                <button class="size-chip" onclick="selectProductSize('m-sh-02', 'XL', this)">XL</button>
+                <button class="size-chip" onclick="selectProductSize('m-sh-02', 'XXL', this)">XXL</button>
+              </div>
+              <div class="card-footer">
+                <span class="card-price">₹1,450</span>
+                <button class="btn-card-add" onclick="handleAddProductToCart('m-sh-02', this)">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                  <span>Add to Bag</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 3 -->
+          <article class="video-product-card" data-id="b-et-05">
+            <span class="card-tag boys">Festive Special</span>
+            <div class="card-img-wrap">
+              <img src="assets/boys_festive_kurta.jpg" alt="Prince Regent Boys' Terracotta Kurta Set" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-cat" style="color: var(--boys-accent-light);">Junior Suite</span>
+              <h4 class="card-title">Prince Regent Boys' Terracotta Kurta Set</h4>
+              <p class="card-material">Chanderi Silk-Cotton Blend with Brocade Accents</p>
+              <div class="card-sizes">
+                <button class="size-chip selected" onclick="selectProductSize('b-et-05', '4-5Y', this)">4-5Y</button>
+                <button class="size-chip" onclick="selectProductSize('b-et-05', '6-7Y', this)">6-7Y</button>
+                <button class="size-chip" onclick="selectProductSize('b-et-05', '8-9Y', this)">8-9Y</button>
+                <button class="size-chip" onclick="selectProductSize('b-et-05', '10-11Y', this)">10-11Y</button>
+              </div>
+              <div class="card-footer">
+                <span class="card-price" style="color: var(--boys-accent-light);">₹1,950</span>
+                <button class="btn-card-add" onclick="handleAddProductToCart('b-et-05', this)">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                  <span>Add to Bag</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 4 -->
+          <article class="video-product-card" data-id="b-sh-06">
+            <span class="card-tag boys">Summer Junior</span>
+            <div class="card-img-wrap">
+              <img src="assets/boys_linen_shirt.jpg" alt="Junior Riviera Sky Washed Linen Shirt" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-cat" style="color: var(--boys-accent-light);">Junior Suite</span>
+              <h4 class="card-title">Junior Riviera Sky Washed Linen Shirt</h4>
+              <p class="card-material">100% French Normandy Flax Linen</p>
+              <div class="card-sizes">
+                <button class="size-chip selected" onclick="selectProductSize('b-sh-06', '4-5Y', this)">4-5Y</button>
+                <button class="size-chip" onclick="selectProductSize('b-sh-06', '6-7Y', this)">6-7Y</button>
+                <button class="size-chip" onclick="selectProductSize('b-sh-06', '8-9Y', this)">8-9Y</button>
+                <button class="size-chip" onclick="selectProductSize('b-sh-06', '10-11Y', this)">10-11Y</button>
+              </div>
+              <div class="card-footer">
+                <span class="card-price" style="color: var(--boys-accent-light);">₹1,250</span>
+                <button class="btn-card-add" onclick="handleAddProductToCart('b-sh-06', this)">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                  <span>Add to Bag</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 5 -->
+          <article class="video-product-card" data-id="m-cs-07">
+            <span class="card-tag">Streetwear</span>
+            <div class="card-img-wrap">
+              <img src="assets/mocca/mocca_hoodies.jpeg" alt="MOCCA Heavyweight Street Hoodie" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-cat">Gents Atelier</span>
+              <h4 class="card-title">MOCCA Heavyweight Street Hoodie</h4>
+              <p class="card-material">450 GSM Organic Combed Fleece Cotton</p>
+              <div class="card-sizes">
+                <button class="size-chip selected" onclick="selectProductSize('m-cs-07', 'M', this)">M</button>
+                <button class="size-chip" onclick="selectProductSize('m-cs-07', 'L', this)">L</button>
+                <button class="size-chip" onclick="selectProductSize('m-cs-07', 'XL', this)">XL</button>
+              </div>
+              <div class="card-footer">
+                <span class="card-price">₹1,750</span>
+                <button class="btn-card-add" onclick="handleAddProductToCart('m-cs-07', this)">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                  <span>Add to Bag</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 6 -->
+          <article class="video-product-card" data-id="m-et-03">
+            <span class="card-tag">Wedding Edition</span>
+            <div class="card-img-wrap">
+              <img src="assets/gent_ethnic_kurta.jpg" alt="Royal Sapphire Raw Silk Festive Kurta" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-cat">Gents Atelier</span>
+              <h4 class="card-title">Royal Sapphire Raw Silk Festive Kurta</h4>
+              <p class="card-material">Handloom Tussar &amp; Mulberry Raw Silk</p>
+              <div class="card-sizes">
+                <button class="size-chip selected" onclick="selectProductSize('m-et-03', '38', this)">38</button>
+                <button class="size-chip" onclick="selectProductSize('m-et-03', '40', this)">40</button>
+                <button class="size-chip" onclick="selectProductSize('m-et-03', '42', this)">42</button>
+                <button class="size-chip" onclick="selectProductSize('m-et-03', '44', this)">44</button>
+              </div>
+              <div class="card-footer">
+                <span class="card-price">₹2,950</span>
+                <button class="btn-card-add" onclick="handleAddProductToCart('m-et-03', this)">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                  <span>Add to Bag</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
