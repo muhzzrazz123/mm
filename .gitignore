@@ -1,3 +1,11 @@
 node_modules/
 .DS_Store
 Thumbs.db
+server.js
+package.json
+package-lock.json
+build_real_keyframes.js
+capture-*.js
+get-section-metrics.js
+test-*.js
+verify-*.js
