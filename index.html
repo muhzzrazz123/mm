@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOCCA Gents &amp; Boys | Scroll-Driven Video Showroom</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/video-experience.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       PRELOADER PROGRESS SCREEN (0% to 100%)
+       ======================================================================== -->
+  <div id="preloader-screen">
+    <div class="preloader-box">
+      <div class="preloader-logo">
+        <div class="preloader-crest">👑</div>
+        <div>
+          <div class="preloader-title">MOCCA</div>
+          <div class="preloader-sub">Gents &amp; Boys • Chattiparamba</div>
+        </div>
+      </div>
+
+      <div class="preloader-skater-icon">🛹</div>
+
+      <div class="preloader-bar-wrap">
+        <div class="preloader-bar-fill" id="preloader-fill"></div>
+      </div>
+
+      <div class="preloader-status">
+        <span>Buffering 3D Showroom Frames...</span>
+        <span id="preloader-percent">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       GLOBAL SCROLL PROGRESS METER ON TOP EDGE
+       ======================================================================== -->
+  <div id="global-scroll-meter">
+    <div id="global-scroll-meter-fill"></div>
+  </div>
+
+  <!-- ========================================================================
+       FIXED FULLSCREEN VIDEO CANVAS (BEHIND CONTENT)
+       Draws frames from /frames/ as the user scrolls
+       ======================================================================== -->
+  <canvas id="video-canvas"></canvas>
+  <div class="video-poster-fallback"></div>
+
+  <!-- ========================================================================
+       FIXED LUXURY HEADER
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#section-hero" class="brand-logo">
+        <div class="brand-crest">👑</div>
+        <div class="brand-names">
+          <span class="brand-title">MOCCA</span>
+          <span class="brand-tagline">GENTS | BOYS • CHATTIPARAMBA</span>
+        </div>
+      </a>
+
+      <!-- Clip Navigation Pills -->
+      <nav class="clip-nav-bar">
+        <a href="#section-hero" class="clip-nav-pill active" data-target="hero">01. Entrance</a>
+        <a href="#section-gents" class="clip-nav-pill" data-target="gents">02. Gents Zone</a>
+        <a href="#section-boys" class="clip-nav-pill" data-target="boys">03. Boys Zone</a>
+        <a href="#section-new-arrivals" class="clip-nav-pill" data-target="arrivals">04. New Arrivals</a>
+        <a href="#section-counter" class="clip-nav-pill" data-target="counter">05. Counter</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="header-cart-btn" aria-label="Open Tailoring Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-count-badge" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       MASTER SCROLL TRACK (CONTAINER FOR GSAP SCROLLTRIGGER & LENIS)
+       Scroll down = skater moves forward | Scroll up = moves backward
+       ======================================================================== -->
+  <main id="scroll-experience-container">
+
+    <!-- ----------------------------------------------------------------------
+         SECTION 1: HERO (TIMED TO CLIP 1 - ENTRANCE ROLL-IN)
+         ---------------------------------------------------------------------- -->
+    <section id="section-hero" class="clip-section">
+      <h1 class="hero-brand-title">MOCCA</h1>
+      <div class="hero-scroll-indicator" aria-hidden="true">
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------------
+         SECTION 2: GENTS ZONE (TIMED TO CLIP 2 - GLIDING PAST SUITS)
+         ---------------------------------------------------------------------- -->
+    <section id="section-gents" class="clip-section">
+      <div class="clip-section-card">
+        <div class="clip-tag-row">
+          <span class="clip-badge">Clip 02 • Gents Atelier</span>
+          <span class="section-label" style="margin: 0;">Savile Row Meets Malappuram</span>
+        </div>
+
+        <h2 class="clip-title">Tailored Gents Collection</h2>
+        <p class="clip-desc">
+          Camera follows from the side as our skater glides past structured two-piece suits, formal cutaway shirts, and pleated trousers. Hand-tailored from long-staple cotton and wool blends.
+        </p>
+
+        <!-- Product Cards (Editable HTML Layer) -->
+        <div class="video-product-grid">
+          <!-- Item 1 -->
+          <article class="video-product-card" data-id="g-sh-01">
+            <span class="card-tag">Signature Cut</span>
+            <div class="card-img-wrap">
+              <img src="assets/gent_oxford_shirt.jpg" alt="MOCCA Signature Oxford Shirt" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-cat">Gents Atelier</span>
+              <h3 class="card-title">Signature Oxford Cutaway Shirt</h3>
+              <p class="card-material">100% Superfine Giza Cotton (140s/2 Two-Ply)</p>
+              <div class="card-sizes">
+                <button class="size-chip selected" onclick="selectProductSize('g-sh-01', '38', this)">38</button>
+                <button class="size-chip" onclick="selectProductSize('g-sh-01', '40', this)">40</button>
+                <button class="size-chip" onclick="selectProductSize('g-sh-01', '42', this)">42</button>
+                <button class="size-chip" onclick="selectProductSize('g-sh-01', '44', this)">44</button>
+              </div>
+              <div class="card-footer">
+                <span class="card-price">₹1,850</span>
+                <button class="btn-card-add" onclick="handleAddProductToCart('g-sh-01', this)">
+                  <span>Add to Bag</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 2 -->
+          <article class="video-product-card" data-id="m-sh-02">
+            <span class="card-tag">Showroom Drop</span>
+            <div class="card-img-wrap">
+              <img src="assets/mocca/mocca_shirts_rack.jpeg" alt="Cuban Resort Collar Shirt" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-cat">Gents Casual</span>
+              <h3 class="card-title">Cuban Resort Collar Textured Shirt</h3>
+              <p class="card-material">Textured Cotton Slub &amp; Waffle Weave</p>
+              <div class="card-sizes">
+                <button class="size-chip selected" onclick="selectProductSize('m-sh-02', 'M', this)">M</button>
+                <button class="size-chip" onclick="selectProductSize('m-sh-02', 'L', this)">L</button>
+                <button class="size-chip" onclick="selectProductSize('m-sh-02', 'XL', this)">XL</button>
+              </div>
+              <div class="card-footer">
+                <span class="card-price">₹1,450</span>
+                <button class="btn-card-add" onclick="handleAddProductToCart('m-sh-02', this)">
+                  <span>Add to Bag</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 3 -->
+          <article class="video-product-card" data-id="g-tr-03">
+            <span class="card-tag">Bespoke Drape</span>
+            <div class="card-img-wrap">
+              <img src="assets/gent_wool_trousers.jpg" alt="MOCCA Tailored Trousers" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-cat">Gents Trousers</span>
+              <h3 class="card-title">Savile Double-Pleat Trousers</h3>
+              <p class="card-material">Wool-Touch Peach Viscose Blend with Spandex</p>
+              <div class="card-sizes">
+                <button class="size-chip selected" onclick="selectProductSize('g-tr-03', '30', this)">30</button>
+                <button class="size-chip" onclick="selectProductSize('g-tr-03', '32', this)">32</button>
+                <button class="size-chip" onclick="selectProductSize('g-tr-03', '34', this)">34</button>
+                <button class="size-chip" onclick="selectProductSize('g-tr-03', '36', this)">36</button>
+              </div>
+              <div class="card-footer">
+                <span class="card-price">₹1,650</span>
+                <button class="btn-card-add" onclick="handleAddProductToCart('g-tr-03', this)">
+                  <span>Add to Bag</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------------
+         SECTION 3: BOYS ZONE (TIMED TO CLIP 3 - BRIGHTER AREA & OLLIE JUMP)
+         ---------------------------------------------------------------------- -->
+    <section id="section-boys" class="clip-section">
+      <div class="clip-section-card">
+        <div class="clip-tag-row">
+          <span class="clip-badge boys">Clip 03 • Junior Suite</span>
+          <span class="section-label" style="margin: 0; color: var(--boys-accent-light);">Playful Luxury for Young Gentlemen</span>
+        </div>
+
+        <h2 class="clip-title">The Boys' Collection</h2>
+        <p class="clip-desc">
+          Turning sharply into the brighter kids' section with a clean ollie! Tailored for celebrations, Eid, weddings, and casual comfort.
+        </p>
+
+        <!-- Product Cards (Editable HTML Layer) -->
+        <div class="video-product-grid">
+          <!-- Item 1 -->
+          <article class="video-product-card" data-id="b-et-04">
+            <span class="card-tag boys">Festive Special</span>
+            <div class="card-img-wrap">
+              <img src="assets/boys_festive_kurta.jpg" alt="Prince Regent Boys Kurta Set" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-cat" style="color: var(--boys-accent-light);">Junior Festive</span>
+              <h3 class="card-title">Prince Regent Boys' Kurta Set</h3>
+              <p class="card-material">Chanderi Silk-Cotton Blend with Brocade Accents</p>
+              <div class="card-sizes">
+                <button class="size-chip selected" onclick="selectProductSize('b-et-04', '4-5Y', this)">4-5Y</button>
+                <button class="size-chip" onclick="selectProductSize('b-et-04', '6-7Y', this)">6-7Y</button>
+                <button class="size-chip" onclick="selectProductSize('b-et-04', '8-9Y', this)">8-9Y</button>
+                <button class="size-chip" onclick="selectProductSize('b-et-04', '10-11Y', this)">10-11Y</button>
+              </div>
+              <div class="card-footer">
+                <span class="card-price" style="color: var(--boys-accent-light);">₹1,950</span>
+                <button class="btn-card-add" onclick="handleAddProductToCart('b-et-04', this)">
+                  <span>Add to Bag</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 2 -->
+          <article class="video-product-card" data-id="b-sh-05">
+            <span class="card-tag boys">Summer Breeze</span>
+            <div class="card-img-wrap">
+              <img src="assets/boys_linen_shirt.jpg" alt="Junior Riviera Linen Shirt" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-cat" style="color: var(--boys-accent-light);">Junior Casual</span>
+              <h3 class="card-title">Junior Riviera Sky Linen Shirt</h3>
+              <p class="card-material">100% French Normandy Flax Linen</p>
+              <div class="card-sizes">
+                <button class="size-chip selected" onclick="selectProductSize('b-sh-05', '4-5Y', this)">4-5Y</button>
+                <button class="size-chip" onclick="selectProductSize('b-sh-05', '6-7Y', this)">6-7Y</button>
+                <button class="size-chip" onclick="selectProductSize('b-sh-05', '8-9Y', this)">8-9Y</button>
+              </div>
+              <div class="card-footer">
+                <span class="card-price" style="color: var(--boys-accent-light);">₹1,250</span>
+                <button class="btn-card-add" onclick="handleAddProductToCart('b-sh-05', this)">
+                  <span>Add to Bag</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 3 -->
+          <article class="video-product-card" data-id="b-tr-07">
+            <span class="card-tag boys">Comfort Fit</span>
+            <div class="card-img-wrap">
+              <img src="assets/gent_wool_trousers.jpg" alt="Junior Atelier Chino Trousers" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-cat" style="color: var(--boys-accent-light);">Junior Trousers</span>
+              <h3 class="card-title">Junior Atelier Stretch Chinos</h3>
+              <p class="card-material">98% Pima Cotton, 2% Elastane (Interior Waist Adjuster)</p>
+              <div class="card-sizes">
+                <button class="size-chip selected" onclick="selectProductSize('b-tr-07', '4-5Y', this)">4-5Y</button>
+                <button class="size-chip" onclick="selectProductSize('b-tr-07', '6-7Y', this)">6-7Y</button>
+                <button class="size-chip" onclick="selectProductSize('b-tr-07', '8-9Y', this)">8-9Y</button>
+              </div>
+              <div class="card-footer">
+                <span class="card-price" style="color: var(--boys-accent-light);">₹1,100</span>
+                <button class="btn-card-add" onclick="handleAddProductToCart('b-tr-07', this)">
+                  <span>Add to Bag</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------------
+         SECTION 4: NEW ARRIVALS (TIMED TO CLIP 4 - DECELERATING AT DISPLAY WALL)
+         Driven by data/new_arrivals.json for easy editing
+         ---------------------------------------------------------------------- -->
+    <section id="section-new-arrivals" class="clip-section">
+      <div class="clip-section-card">
+        <div class="clip-tag-row">
+          <span class="clip-badge">Clip 04 • The Display Wall</span>
+          <span class="section-label" style="margin: 0;">Driven by data/new_arrivals.json</span>
+        </div>
+
+        <h2 class="clip-title">New Arrivals Display Wall</h2>
+        <p class="clip-desc">
+          Rolling up to the illuminated showcase wall and slowing down smoothly. All items below are populated directly from a simple JSON file, keeping stock completely editable.
+        </p>
+
+        <!-- Populated dynamically via scroll-video.js from data/new_arrivals.json -->
+        <div class="video-product-grid" id="new-arrivals-json-grid"></div>
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------------
+         SECTION 5: COUNTER & ORDER (TIMED TO CLIP 5 - STEPPING OFF BOARD)
+         ---------------------------------------------------------------------- -->
+    <section id="section-counter" class="clip-section">
+      <div class="clip-section-card compact">
+        <div class="counter-card-layout">
+          <div class="counter-welcome">
+            <div class="counter-avatar-badge">
+              <div class="counter-avatar"></div>
+              <div>
+                <h3 class="counter-avatar-title">Welcome to the Counter</h3>
+                <span class="counter-avatar-sub">Clip 05 • Checkout &amp; WhatsApp Concierge</span>
+              </div>
+            </div>
+            
+            <h2 class="clip-title" style="font-size: 2.2rem;">Step Off the Board, Finalize Your Fit.</h2>
+            <p class="clip-desc" style="margin-bottom: 20px;">
+              Our skater arrives at the boutique checkout counter and steps off the board with a smile. Your selected garments are ready to be dispatched directly to our master tailor on WhatsApp.
+            </p>
+
+            <div style="display: flex; gap: 12px; font-size: 0.85rem; color: var(--gold-champagne);">
+              <span>✓ Instant tailor confirmation</span>
+              <span>✓ Custom measurements</span>
+              <span>✓ Direct boutique dispatch</span>
+            </div>
+          </div>
+
+          <div class="counter-order-box">
+            <h4 class="counter-order-title">
+              <span>Your Tailoring Order</span>
+              <span class="cart-count-badge" style="position: static; display: inline-flex;">0</span>
+            </h4>
+
+            <div class="counter-stat-row">
+              <span>Boutique Location</span>
+              <span style="color: #fff;">Chattiparamba - Malappuram</span>
+            </div>
+            <div class="counter-stat-row">
+              <span>Delivery / Service</span>
+              <span style="color: var(--gold-champagne);">Complimentary Fitted Atelier</span>
+            </div>
+            <div class="counter-stat-row">
+              <span>Order Destination</span>
+              <span style="color: #fff;">WhatsApp Hotline</span>
+            </div>
+
+            <div class="counter-total-row">
+              <span>Order Valuation:</span>
+              <span id="counter-total-display" class="gold-text">₹0</span>
+            </div>
+
+            <button class="btn-counter-whatsapp" id="counter-whatsapp-btn" onclick="cartManager.checkoutViaWhatsApp()">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.101.005.234-.038.365.278.144.346.491 1.2.535 1.288.043.088.072.191.014.307-.058.116-.087.188-.173.289l-.26.303c-.087.088-.179.183-.077.359.101.174.45 1.744 1.761 2.378.291.141.488.163.665.078.188-.088.809-.942.809-.942.144-.202.289-.173.448-.116.159.058 1.012.477 1.185.564.173.087.289.13.332.202.043.072.043.419-.101.824z"/>
+              </svg>
+              <span>Complete Order via WhatsApp</span>
+            </button>
+
+            <div style="font-size: 0.75rem; text-align: center; color: var(--text-dim); margin-top: 10px;">
+              Opens WhatsApp with your items, sizes, quantities, and totals pre-filled.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------------
+         SHOWROOM HERITAGE & BOUTIQUE LOCATION
+         ---------------------------------------------------------------------- -->
+    <section id="about" class="clip-section" style="min-height: auto; padding-top: 60px;">
+      <div class="clip-section-card">
+        <div class="about-atelier-grid">
+          <div class="about-image-card">
+            <img src="assets/mocca/mocca_shelves.jpeg" alt="MOCCA Boutique Showroom Chattiparamba">
+          </div>
+          <div class="about-content">
+            <span class="section-label">Physical Flagship Boutique</span>
+            <h2 class="section-title">MOCCA Gents &amp; Boys</h2>
+            <p class="section-desc">
+              Located in Chattiparamba, Malappuram, <strong>MOCCA</strong> brings modern style to every generation. From luxury festive wear to trendy streetwear, experience the actual showroom space that inspired this scroll experience.
+            </p>
+
+            <div class="about-features">
+              <div class="feature-point">
+                <div class="feature-bullet">📍</div>
+                <div>
+                  <h4 class="feature-title">Chattiparamba - Malappuram Showroom</h4>
+                  <p class="feature-text">Visit our physical showroom for in-person styling and tailored fittings. <a href="https://maps.app.goo.gl/KRuVxzJPEy6JX1e9" target="_blank" style="color: var(--gold-champagne); text-decoration: underline;">Open Google Maps &rarr;</a></p>
+                </div>
+              </div>
+              <div class="feature-point">
+                <div class="feature-bullet">📸</div>
+                <div>
+                  <h4 class="feature-title">Follow on Instagram @mocca_gents</h4>
+                  <p class="feature-text">Catch fresh drops, customer fittings, and showroom highlights. <a href="https://www.instagram.com/mocca_gents/" target="_blank" style="color: var(--gold-champagne); text-decoration: underline;">Instagram @mocca_gents &rarr;</a></p>
+                </div>
+              </div>
+              <div class="feature-point">
+                <div class="feature-bullet">💬</div>
+                <div>
+                  <h4 class="feature-title">WhatsApp Orders</h4>
+                  <p class="feature-text">Direct 1-on-1 tailor consultations for custom sizing and delivery scheduling.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inside Showroom Gallery -->
+        <div style="margin-top: 48px;">
+          <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 20px; text-align: center; color: var(--gold-champagne);">Inside The Real MOCCA Showroom</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+            <div style="border-radius: 8px; overflow: hidden; height: 220px; border: 1px solid var(--border-subtle);">
+              <img src="assets/mocca/mocca_shirts_rack.jpeg" alt="MOCCA Shirts Rack" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="border-radius: 8px; overflow: hidden; height: 220px; border: 1px solid var(--border-subtle);">
+              <img src="assets/mocca/mocca_cubbies.jpeg" alt="MOCCA Color Cubbies" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="border-radius: 8px; overflow: hidden; height: 220px; border: 1px solid var(--border-subtle);">
+              <img src="assets/mocca/mocca_hoodies.jpeg" alt="MOCCA Hoodies" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="border-radius: 8px; overflow: hidden; height: 220px; border: 1px solid var(--border-subtle);">
+              <img src="assets/mocca/mocca_rails.jpeg" alt="MOCCA Hanging Rails" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <div class="brand-logo" style="margin-bottom: 16px;">
+          <div class="brand-crest">👑</div>
+          <div class="brand-names">
+            <span class="brand-title">MOCCA</span>
+            <span class="brand-tagline">GENTS | BOYS • CHATTIPARAMBA</span>
+          </div>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: 320px;">
+          Modern Style for Every Generation. Premium fashion, festive royal wear, and trending everyday collections for gentlemen and boys.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Showroom Journey</h4>
+        <ul>
+          <li><a href="#section-hero">01. Entrance Roll-In</a></li>
+          <li><a href="#section-gents">02. Gents Atelier</a></li>
+          <li><a href="#section-boys">03. Junior Suite (Ollie)</a></li>
+          <li><a href="#section-new-arrivals">04. Display Wall</a></li>
+          <li><a href="#section-counter">05. Counter &amp; Order</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect &amp; Visit</h4>
+        <ul>
+          <li><a href="https://maps.app.goo.gl/KRuVxzJPEy6JX1e9" target="_blank">Chattiparamba, Malappuram</a></li>
+          <li><a href="https://www.instagram.com/mocca_gents/" target="_blank">Instagram @mocca_gents</a></li>
+          <li><a href="https://wa.me/[INSERT_WHATSAPP_NUMBER]" target="_blank">WhatsApp Hotline</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 MOCCA Gents | Boys. All rights reserved.</span>
+      <span>WhatsApp Orders &amp; Inquiries: [INSERT_WHATSAPP_NUMBER]</span>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       SLIDE-OVER CART DRAWER & WHATSAPP CHECKOUT
+       ======================================================================== -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3 class="cart-drawer-title">Tailoring Bag &amp; Order</h3>
+      <button class="btn-close-drawer" id="close-cart-btn" aria-label="Close Bag">✕</button>
+    </div>
+
+    <div class="cart-drawer-body">
+      <div class="cart-empty-state" id="cart-empty-state">
+        <div class="empty-icon">✂</div>
+        <h4>Your tailoring bag is empty</h4>
+        <p style="font-size: 0.85rem; margin-top: 8px;">Explore our collections to add bespoke garments.</p>
+      </div>
+      <div class="cart-items-list" id="cart-items-list">
+        <!-- Rendered dynamically by cart.js -->
+      </div>
+    </div>
+
+    <div class="cart-drawer-footer" id="cart-drawer-footer" style="display: none;">
+      <div class="cart-summary-line">
+        <span>Subtotal</span>
+        <span id="cart-subtotal-amount">₹0</span>
+      </div>
+      <div class="cart-summary-line">
+        <span>Atelier Delivery</span>
+        <span style="color: var(--gold-champagne);">Complimentary</span>
+      </div>
+      <div class="cart-total-line">
+        <span>Total Commission</span>
+        <span id="cart-total-amount" class="gold-text">₹0</span>
+      </div>
+
+      <button class="btn-whatsapp-order" id="whatsapp-checkout-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.101.005.234-.038.365.278.144.346.491 1.2.535 1.288.043.088.072.191.014.307-.058.116-.087.188-.173.289l-.26.303c-.087.088-.179.183-.077.359.101.174.45 1.744 1.761 2.378.291.141.488.163.665.078.188-.088.809-.942.809-.942.144-.202.289-.173.448-.116.159.058 1.012.477 1.185.564.173.087.289.13.332.202.043.072.043.419-.101.824z"/>
+        </svg>
+        <span>Complete Order via WhatsApp</span>
+      </button>
+      <div class="whatsapp-note">Opens WhatsApp with pre-filled items, sizes &amp; totals for tailor confirmation.</div>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       CORE JAVASCRIPT LIBRARIES & MODULES (CDN + ZERO BUILD)
+       ======================================================================== -->
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Application Modules -->
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/scroll-video.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

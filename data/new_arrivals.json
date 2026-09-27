@@ -1,0 +1,74 @@
+[
+  {
+    "id": "m-sh-01",
+    "name": "MOCCA Signature Oxford Cutaway Shirt",
+    "price": 1850,
+    "currency": "INR",
+    "material": "100% Superfine Giza Cotton (140s/2 Two-Ply)",
+    "category": "gents",
+    "tag": "Trending Drop",
+    "sizes": ["38", "40", "42", "44"],
+    "image": "assets/gent_oxford_shirt.jpg",
+    "description": "Clean structured cutaway collar, curved French seams, mother-of-pearl buttons. Tailored for sharp formal and evening wear."
+  },
+  {
+    "id": "m-sh-02",
+    "name": "Cuban Resort Collar Textured Shirt",
+    "price": 1450,
+    "currency": "INR",
+    "material": "Textured Cotton Slub & Waffle Weave",
+    "category": "gents",
+    "tag": "Showroom Rack",
+    "sizes": ["M", "L", "XL", "XXL"],
+    "image": "assets/mocca/mocca_shirts_rack.jpeg",
+    "description": "Relaxed open camp collar from the MOCCA Summer drop. Breathable airy drape for contemporary effortless styling."
+  },
+  {
+    "id": "b-et-05",
+    "name": "Prince Regent Boys' Terracotta Kurta Set",
+    "price": 1950,
+    "currency": "INR",
+    "material": "Chanderi Silk-Cotton Blend with Brocade Accents",
+    "category": "boys",
+    "tag": "Festive Special",
+    "sizes": ["4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"],
+    "image": "assets/boys_festive_kurta.jpg",
+    "description": "Terracotta silk-cotton festive ensemble with azure blue thread piping and straight silk trousers for young boys."
+  },
+  {
+    "id": "b-sh-06",
+    "name": "Junior Riviera Sky Washed Linen Shirt",
+    "price": 1250,
+    "currency": "INR",
+    "material": "100% French Normandy Flax Linen",
+    "category": "boys",
+    "tag": "Summer Junior",
+    "sizes": ["4-5Y", "6-7Y", "8-9Y", "10-11Y"],
+    "image": "assets/boys_linen_shirt.jpg",
+    "description": "Lightweight breathable washed flax linen with roll-tab sleeves and natural coconut shell buttons."
+  },
+  {
+    "id": "m-cs-07",
+    "name": "MOCCA Heavyweight Street Hoodie",
+    "price": 1750,
+    "currency": "INR",
+    "material": "450 GSM Organic Combed Fleece Cotton",
+    "category": "gents",
+    "tag": "Streetwear",
+    "sizes": ["M", "L", "XL"],
+    "image": "assets/mocca/mocca_hoodies.jpeg",
+    "description": "Drop-shoulder boxy silhouette with double-layered hood. Seen on MOCCA's viral Instagram drops."
+  },
+  {
+    "id": "m-et-03",
+    "name": "Royal Sapphire Raw Silk Festive Kurta",
+    "price": 2950,
+    "currency": "INR",
+    "material": "Handloom Tussar & Mulberry Raw Silk",
+    "category": "gents",
+    "tag": "Wedding Edition",
+    "sizes": ["38", "40", "42", "44", "46"],
+    "image": "assets/gent_ethnic_kurta.jpg",
+    "description": "Midnight navy raw silk with antique gold micro embroidery on mandarin collar and concealed placket."
+  }
+]
