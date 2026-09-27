@@ -288,6 +288,7 @@ class CartManager {
 
     let message = `*NEW SHOWROOM ORDER*\n`;
     message += `👑 *MOCCA Gents | Boys (Chattiparamba)*\n`;
+    message += `📍 Boutique Location: https://maps.app.goo.gl/4NjPPbsudpmnT3JX6\n`;
     message += `──────────────────────\n`;
     message += `*ORDERED PIECES:*\n`;
 
